@@ -43,15 +43,6 @@ void quickSort(int arr[], int low, int high) {
     }
 }
 
-// A utility function to print array of size n
-void printArray(int arr[], int n) {
-    for (int i = 0; i < n; i++)
-        cout << arr[i] << " ";
-    cout << endl;
-}
-
-
-
 // Driver code
 int main() {
     int n;
@@ -71,9 +62,6 @@ int main() {
     clock_t end = clock();
     double time_taken = double(end - start) / double(CLOCKS_PER_SEC); // calculate the execution time
     
-    // print the sorted array and the execution time
-    cout << "Sorted array: \n";
-    printArray(arr, n);
     cout << "Execution time: " << time_taken << " seconds" << endl;
     
     return 0;
