@@ -1,0 +1,79 @@
+#include <iostream>
+#include <stack>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+// A function to swap two elements
+void swap(int* a, int* b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+//The Function For Partition.
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];    // pivot
+    int i = (low - 1);  // Index of smaller element
+
+    for (int j = low; j <= high - 1; j++) {
+        /* If current element is smaller than or
+         equal to pivot*/
+        if (arr[j] <= pivot) {
+            i++;    // increment index of smaller element
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+// Iterative Function For QuickSort
+void quickSortIterative(int arr[], int low, int high) {
+    stack<int> st;
+    st.push(low);
+    st.push(high);
+
+    while (!st.empty()) {
+        high = st.top();
+        st.pop();
+        low = st.top();
+        st.pop();
+
+        int pi = partition(arr, low, high);
+
+        if (pi - 1 > low) {
+            st.push(low);
+            st.push(pi - 1);
+        }
+
+        if (pi + 1 < high) {
+            st.push(pi + 1);
+            st.push(high);
+        }
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter the size of the array: ";
+    cin >> n;
+    
+    // generate a random array of size n
+    int arr[n];
+    srand(time(0));  // seed the random number generator with the current time
+    for (int i = 0; i < n; i++) {
+        arr[i] = rand();
+    }
+    
+    // sort the array and calculate the execution time
+    clock_t start = clock();
+    
+    quickSortIterative(arr, 0, n - 1);
+    
+    clock_t end = clock();
+    double time_taken = double(end - start) / double(CLOCKS_PER_SEC); // calculate the execution time
+
+    cout << "Execution time: " << time_taken << " seconds" << endl;
+    
+    return 0;
+}
