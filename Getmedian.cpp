@@ -24,9 +24,10 @@ int main()
         median = arr[n/2];
         
     for (size_t i = 0; i < n; i++) {
-        std::cout << arr[i] << ' ';
+        std::cout << arr[i] << ' '<<endl;
     }
-    std::cout << std::setprecision (2) << median << std::endl;
+    
+    std::cout << std::setprecision (2) << "median is "<< median << std::endl;
 
     return 0;
 }
