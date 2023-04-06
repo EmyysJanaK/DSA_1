@@ -30,6 +30,9 @@ int main() {
     s.push(8);
     s.push(12);
     s.push(16);
-
+    for(i =0 ; i < 5;i++){
+        cout << s[i] << endl;
+    }
+    
     return 0;
 }
