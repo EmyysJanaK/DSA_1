@@ -72,7 +72,7 @@ int main() {
         cin >> value;
         stack.push(value);
     }
-
+    // Output.
     stack.display();
 
     return 0;
