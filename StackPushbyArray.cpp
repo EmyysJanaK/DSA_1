@@ -1,38 +1,67 @@
 #include <iostream>
 using namespace std;
 
-const int MAX_SIZE = 100;
-
-// Implement the array.
+// Implement the class.
 class Stack {
 private:
-    int data[MAX_SIZE];
     int top;
+    int* arr;
+    int size;
+
 public:
-    Stack() {
+    Stack(int s) {
         top = -1;
+        size = s;
+        arr = new int[size];
     }
 
-    // Check whether Stack is full otherwise push elements in to the top of the stack.
-    void push(int x) {
-        if (top >= MAX_SIZE - 1) {
-            cout << "Stack Overflow" << endl;
+    void push(int value) {
+        if (top == size - 1) {
+            cout << "Stack Overflow\n";
             return;
         }
-        data[++top] = x;
+        arr[++top] = value;
+        cout << "Pushed Element: " << arr[top] << endl;
+    }
+
+    void display() {
+        if (top == -1) {
+            cout << "Stack is empty\n";
+            return;
+        }
+        cout << "Stack elements are: ";
+        for (int i = top; i >= 0; i--)
+            cout << arr[i] << " ";
+        cout << endl;
     }
 };
 
 int main() {
-    Stack s;
+    int size;
+    cout << "Enter size of stack: "; // Implementing a static array.
+    cin >> size;
 
-    s.push(4);
-    s.push(8);
-    s.push(12);
-    s.push(16);
-    for(i =0 ; i < 5;i++){
-        cout << s[i] << endl;
+    Stack s(size);
+
+    int choice, value;
+    while (1) {
+        cout << "1. Push\n2. Display ";
+        cin >> choice;
+        // Input the element just entered to be pushed.
+        switch (choice) {
+        case 1:
+            cout << "Enter value to be pushed: ";
+            cin >> value;
+            s.push(value);
+            break;
+        case 2:
+            s.display();
+            break;
+        // Display whether invalid input.
+        default:
+            cout << "Invalid choice\n";
+        }
     }
-    
+
     return 0;
 }
