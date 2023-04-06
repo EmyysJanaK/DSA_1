@@ -1,46 +1,80 @@
 #include <iostream>
+
 using namespace std;
 
-const int MAX_SIZE = 100;
+// Represent the index of the top element in the stack.
 
 class Stack {
 private:
-    int data[MAX_SIZE];
-    int top;
+    int *arr;   // Pointer to array
+    int top;    // Index of top element
+    int size;   // Maximum size of array
+
 public:
-    Stack() {
-        top = -1;
+    Stack(int s) {
+        size = s;
+        arr = new int[size];    // Allocate memory for array
+        top = -1;               // Set top index to -1
     }
 
-    
-    // Check whether there can be removed elemnts from the top of the stack.
-    void pop() {
-        if (top < 0) {
-            cout << "Stack Underflow" << endl;
-            return;
-        }
-        top--;
-    }
-    // Show the head value of the stack.
-    int topValue() {
-        if (top < 0) {
-            cout << "Stack is Empty" << endl;
-            return -1;
-        }
-        return data[top];
+    ~Stack() {
+        delete[] arr;           // Free memory allocated for array
     }
 
     bool isEmpty() {
-        return (top < 0);
+        return top == -1;
+    }
+
+    bool isFull() {
+        return top == size - 1;
+    }
+
+    void push(int x) {
+        if (isFull()) {
+            cout << "Error: Stack is full." << endl;
+            return;
+        }
+        arr[++top] = x;         // increment top index and insert element
+    }
+    
+    //Remove top element of the static array.
+    
+    int pop() {
+        if (isEmpty()) {
+            cout << "Error: Stack is empty." << endl;
+            return -1;
+        }
+        return arr[top--];      // Return top element and decrement top index
+    }
+
+    void print() {
+        if (isEmpty()) {
+            cout << "Stack is empty." << endl;
+            return;
+        }
+        cout << "Stack: ";
+        for (int i = 0; i <= top; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
     }
 };
 
 int main() {
-    Stack s;
+    int size;
+    cout << "Enter size of stack: ";
+    cin >> size;
+    Stack s(size);
 
-    s.pop();
-    s.pop();
-    s.pop();
-    s.pop(); // output: Stack Underflow
+    s.push(1);
+    s.push(2);
+    s.push(3);
+    s.push(4);
+    s.print();
+
+    int popped = s.pop();
+    cout << "Popped element: " << popped << endl;
+    s.print();
+
     return 0;
 }
