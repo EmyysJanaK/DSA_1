@@ -51,4 +51,19 @@ public:
   {
     return graph.size();
   }
+  inline size_t get_flights() const
+  {
+    return flights;
+  }
+
+  inline const vector<size_t> &get_ids(int from) const
+  {
+    return graph[from];
+  }
+
+  inline const Edge &get_edge(size_t id) const
+  {
+    return edges[id];
+  }
+
 };
