@@ -34,4 +34,21 @@ public:
   {
     edges.reserve(m * 2);
   }
+  inline void add_edge(int from, int to, int capacity)
+  {
+    /* Note that we first append a forward edge and then a backward edge,
+         * so all forward edges are stored at even indices (starting from 0),
+         * whereas backward edges are stored at odd indices in the list edges */
+    Edge forward_edge = {from, to, capacity, 0};
+    Edge backward_edge = {to, from, 0, 0};
+    graph[from].push_back(edges.size());
+    edges.push_back(forward_edge);
+    graph[to].push_back(edges.size());
+    edges.push_back(backward_edge);
+  }
+
+  inline size_t size() const
+  {
+    return graph.size();
+  }
 };
