@@ -77,3 +77,21 @@ public:
     edges[id ^ 1].flow -= flow;
   }
 };
+
+FlowGraph read_data()
+{
+  int n, m;
+  std::cin >> n >> m;
+
+  FlowGraph graph(n + m + 2, m + n + 2, n);
+
+  /* Construct FlowGraph from data given for bipartite graph
+     * by adding source and sink.
+     */
+
+  /* Edges from vertices on the left of bipartite graph to the source */
+  for (int i = 0; i < n; ++i)
+  {
+    graph.add_edge(0, i + 1, 1);
+  }
+}
