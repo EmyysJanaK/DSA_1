@@ -107,4 +107,12 @@ FlowGraph read_data()
       }
     }
   }
+  /* Edges from vertices on the right of bipartite graph to the sink */
+  for (int i = n + 1; i <= m + n; ++i)
+  {
+    graph.add_edge(i, n + m + 1, 1);
+  }
+
+  return graph;
+
 }
