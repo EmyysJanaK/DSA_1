@@ -94,4 +94,17 @@ FlowGraph read_data()
   {
     graph.add_edge(0, i + 1, 1);
   }
+  /* Edges of verteces from left to right of bipartite graph */
+  for (int i = 1; i <= n; ++i)
+  {
+    for (int j = 0; j < m; ++j)
+    {
+      int bit;
+      std::cin >> bit;
+      if (bit == 1)
+      {
+        graph.add_edge(i, n + j + 1, 1);
+      }
+    }
+  }
 }
