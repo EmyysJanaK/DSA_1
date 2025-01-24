@@ -116,3 +116,10 @@ FlowGraph read_data()
   return graph;
 
 }
+void BFS(const FlowGraph &graph, int s, int t, vector<int> &pred)
+{
+  queue<int> q;
+  q.push(s);
+
+  std::fill(pred.begin(), pred.end(), -1);
+}
