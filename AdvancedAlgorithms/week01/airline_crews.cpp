@@ -195,6 +195,7 @@ void print_MBM(FlowGraph &graph, const size_t flights)
     printf("%d ", job);
   }
   printf("%s", "\n");
+  
 }
 
 
