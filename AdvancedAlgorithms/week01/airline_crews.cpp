@@ -178,5 +178,24 @@ int max_flow(FlowGraph &graph, int s, int t)
 
   return flow;
 }
+void print_MBM(FlowGraph &graph, const size_t flights)
+{
+  for (int i = 0; i < flights; ++i)
+  {
+    int job = -1;
+    for (auto id : graph.get_ids(i + 1))
+    {
+      const FlowGraph::Edge &e = graph.get_edge(id);
+      if (e.flow == 1)
+      {
+        job = e.to - flights;
+        break;
+      }
+    }
+    printf("%d ", job);
+  }
+  printf("%s", "\n");
+}
+
 
 
