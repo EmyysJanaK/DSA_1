@@ -195,7 +195,16 @@ void print_MBM(FlowGraph &graph, const size_t flights)
     printf("%d ", job);
   }
   printf("%s", "\n");
-  
+
+}
+int main()
+{
+  std::ios_base::sync_with_stdio(false);
+  FlowGraph graph = read_data();
+
+  max_flow(graph, 0, graph.size() - 1);
+  print_MBM(graph, graph.get_flights());
+  return 0;
 }
 
 
