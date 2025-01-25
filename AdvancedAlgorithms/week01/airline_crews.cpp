@@ -150,4 +150,33 @@ int max_flow(FlowGraph &graph, int s, int t)
   /* Contains predecessors of a vertex to get
      * the path and calculate minimum flow thereon. */
   vector<int> pred(graph.size());
+  do
+  {
+
+    BFS(graph, s, t, pred);
+
+    if (pred[t] != -1)
+    {
+      int min_flow = numeric_limits<int>::max();
+
+      /* Find minimal flow on the path from BFS. */
+      for (int u = pred[t]; u != -1; u = pred[graph.get_edge(u).from])
+      {
+        min_flow = std::min(min_flow, graph.get_edge(u).capacity - graph.get_edge(u).flow);
+      }
+
+      /* Update flow in original and residual graphs along the path from BFS*/
+      for (int u = pred[t]; u != -1; u = pred[graph.get_edge(u).from])
+      {
+        graph.add_flow(u, min_flow);
+      }
+
+      flow += min_flow;
+    }
+
+  } while (pred[t] != -1);
+
+  return flow;
 }
+
+
