@@ -122,4 +122,23 @@ void BFS(const FlowGraph &graph, int s, int t, vector<int> &pred)
   q.push(s);
 
   std::fill(pred.begin(), pred.end(), -1);
+  
+  while (!q.empty())
+  {
+
+    int cur = q.front();
+    q.pop();
+
+    for (auto id : graph.get_ids(cur))
+    {
+
+      const FlowGraph::Edge &e = graph.get_edge(id);
+
+      if (pred[e.to] == -1 && e.capacity > e.flow && e.to != s)
+      {
+        pred[e.to] = id;
+        q.push(e.to);
+      }
+    }
 }
+};
