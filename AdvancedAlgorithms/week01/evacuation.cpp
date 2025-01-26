@@ -16,4 +16,11 @@ public:
   {
     int from, to, capacity, flow;
   };
+
+private:
+  /* List of all - forward and backward - edges */
+  vector<Edge> edges;
+
+  /* These adjacency lists store only indices of edges in the edges list */
+  vector<vector<size_t>> graph;
 };
