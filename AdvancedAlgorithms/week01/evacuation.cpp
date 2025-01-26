@@ -42,4 +42,18 @@ public:
     graph[to].push_back(edges.size());
     edges.push_back(backward_edge);
   }
+  size_t size() const
+  {
+    return graph.size();
+  }
+
+  const vector<size_t> &get_ids(int from) const
+  {
+    return graph[from];
+  }
+
+  const Edge &get_edge(size_t id) const
+  {
+    return edges[id];
+  }
 };
