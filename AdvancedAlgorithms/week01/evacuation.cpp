@@ -23,4 +23,11 @@ private:
 
   /* These adjacency lists store only indices of edges in the edges list */
   vector<vector<size_t>> graph;
+
+public:
+  explicit FlowGraph(size_t n, size_t m)
+      : graph(n)
+  {
+    edges.reserve(m * 2);
+  }
 };
