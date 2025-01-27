@@ -68,3 +68,20 @@ public:
     edges[id ^ 1].flow -= flow;
   }
 };
+
+FlowGraph read_data()
+{
+  int vertex_count, edge_count;
+  std::cin >> vertex_count >> edge_count;
+
+  FlowGraph graph(vertex_count, edge_count);
+
+  for (int i = 0; i < edge_count; ++i)
+  {
+    int u, v, capacity;
+    std::cin >> u >> v >> capacity;
+    graph.add_edge(u - 1, v - 1, capacity);
+  }
+
+  return graph;
+}
