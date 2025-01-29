@@ -54,6 +54,5 @@ public:
         edges[id].flow += flow;
         edges[id ^ 1].flow -= flow; // id ^ 1 gives the backward edge
     }
-
-    
+   
 };
