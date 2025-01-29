@@ -58,5 +58,8 @@ public:
     inline int get_flow(size_t id) const {
         return edges[id].flow;
     }
+    inline int get_capacity(size_t id) const {
+        return edges[id].capacity;
+    }
    
 };
