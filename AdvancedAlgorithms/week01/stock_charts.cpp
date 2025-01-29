@@ -3,6 +3,7 @@
     
 */
 
+#include <cstddef>
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -63,3 +64,13 @@ public:
     }
    
 };
+
+vector<vector<int>> read_data(size_t num_stocks, size_t num_days) {
+    vector<vector<int>> stock_prices(num_stocks, vector<int>(num_days));
+    for (size_t i = 0; i < num_stocks; ++i) {
+        for (size_t j = 0; j < num_days; ++j) {
+            std::cin >> stock_prices[i][j];
+        }
+    }
+    return stock_prices;
+}
