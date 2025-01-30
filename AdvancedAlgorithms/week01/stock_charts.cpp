@@ -82,4 +82,14 @@ FlowGraph construct_graph(size_t num_stocks, size_t num_points) {
     for(size_t i = 0; i < num_stocks; ++i) {
         graph.add_edge(0, i + 1, 1); 
     }
+    for(size_t i = 0; i < num_points; ++i) {
+        graph.add_edge(num_stocks + i + 1, num_stocks + num_points + 1, 1); 
+    }
+    for(size_t i = 0; i < num_stocks; ++i) {
+        for(size_t j = 0; j < num_points; ++j) {
+            if(stock_prices[i][j] > 0) { // positive prices indicate a valid stock point
+                graph.add_edge(i + 1, num_stocks + j + 1, 1); 
+            }
+        }
+    }
 }
