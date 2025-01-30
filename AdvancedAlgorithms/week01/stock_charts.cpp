@@ -74,3 +74,12 @@ vector<vector<int>> read_data(size_t num_stocks, size_t num_days) {
     }
     return stock_prices;
 }
+
+FlowGraph construct_graph(size_t num_stocks, size_t num_points) {
+    vector<vector<int>> stock_prices = read_data(num_stocks, num_points);
+    FlowGraph graph(num_stocks + num_points + 2, num_stocks * num_points + num_stocks + num_points); // Check this
+
+    for(size_t i = 0; i < num_stocks; ++i) {
+        graph.add_edge(0, i + 1, 1); 
+    }
+}
