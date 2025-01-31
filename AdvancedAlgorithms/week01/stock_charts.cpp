@@ -115,4 +115,11 @@ FlowGraph construct_graph(size_t num_stocks, size_t num_points) {
       }
     }
     }
+    /* Edges from vertices on the right of bipartite graph to the sink */
+  for (int i = num_stocks + 1; i <= num_stocks * 2; ++i)
+  {
+    graph.add_edge(i, num_stocks * 2 + 1, 1);
+  }
+
+  return graph;
 };
