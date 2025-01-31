@@ -86,4 +86,33 @@ FlowGraph construct_graph(size_t num_stocks, size_t num_points) {
         graph.add_edge(num_stocks + i + 1, num_stocks + num_points + 1, 1); 
     }
     
-}
+     /* Edges of verteces from left to right of bipartite graph */
+  for (int i = 0; i < num_stocks; ++i)
+  {
+    int cur_stock = i;
+
+    for (int j = 0; j < num_stocks; ++j)
+    {
+      if (j == cur_stock)
+      {
+        continue;
+      }
+
+      bool each_less{true};
+
+      for (int k = 0; k < num_points; ++k)
+      {
+        if (stock_prices[i][k] >= stock_prices[j][k])
+        {
+          each_less = false;
+          break;
+        }
+      }
+
+      if (each_less)
+      {
+        graph.add_edge(i + 1, num_stocks + j + 1, 1);
+      }
+    }
+    }
+};
