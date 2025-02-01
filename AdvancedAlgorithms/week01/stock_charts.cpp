@@ -126,5 +126,5 @@ FlowGraph construct_graph(size_t num_stocks, size_t num_points) {
 
   std::experimental::filesystem::path path = "stock_charts.txt";
   if (std::experimental::filesystem::exists(path)) {
-
+    std::ifstream
 };
