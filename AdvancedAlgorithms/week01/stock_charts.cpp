@@ -159,3 +159,9 @@ void max_flow(FlowGraph &graph, int s, int t)
   /* Contains predecessors of a vertex to get
    * the path and calculate minimum flow thereon. */
   vector<int> pred(graph.size());
+  do
+  {
+    BFS(graph, s, t, pred);
+
+    if (pred[t] != -1)
+    {
