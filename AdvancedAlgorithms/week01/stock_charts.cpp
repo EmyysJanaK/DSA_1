@@ -165,9 +165,4 @@ void max_flow(FlowGraph &graph, int s, int t)
 
     if (pred[t] != -1)
     {
-        do
-  {
-    BFS(graph, s, t, pred);
-
-    if (pred[t] != -1)
-    {
+        
