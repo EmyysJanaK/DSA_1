@@ -165,4 +165,9 @@ void max_flow(FlowGraph &graph, int s, int t)
 
     if (pred[t] != -1)
     {
+        int min_flow = numeric_limits<int>::max();
+
+      /* Find minimal flow on the path from BFS. */
+      for (int u = pred[t]; u != -1; u = pred[graph.get_edge(u).from])
+      {
         
