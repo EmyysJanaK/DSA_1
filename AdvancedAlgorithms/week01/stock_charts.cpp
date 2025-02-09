@@ -170,4 +170,6 @@ void max_flow(FlowGraph &graph, int s, int t)
       /* Find minimal flow on the path from BFS. */
       for (int u = pred[t]; u != -1; u = pred[graph.get_edge(u).from])
       {
+         min_flow = std::min(min_flow, graph.get_edge(u).capacity - graph.get_edge(u).flow);
+      }
         
