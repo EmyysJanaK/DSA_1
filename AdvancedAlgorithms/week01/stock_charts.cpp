@@ -172,4 +172,6 @@ void max_flow(FlowGraph &graph, int s, int t)
       {
          min_flow = std::min(min_flow, graph.get_edge(u).capacity - graph.get_edge(u).flow);
       }
-        
+        /* Update flow in original and residual graphs along the path from BFS*/
+      for (int u = pred[t]; u != -1; u = pred[graph.get_edge(u).from])
+      {
