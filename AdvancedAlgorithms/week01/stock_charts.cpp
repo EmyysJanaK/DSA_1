@@ -174,4 +174,5 @@ void max_flow(FlowGraph &graph, int s, int t)
       }
         /* Update flow in original and residual graphs along the path from BFS*/
       for (int u = pred[t]; u != -1; u = pred[graph.get_edge(u).from])
-      {
+      {graph.add_flow(u, min_flow);
+      }
