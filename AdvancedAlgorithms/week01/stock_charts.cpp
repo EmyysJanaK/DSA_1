@@ -177,3 +177,5 @@ void max_flow(FlowGraph &graph, int s, int t)
       {
         graph.add_flow(u, min_flow);
       }
+      flow += min_flow;
+    }
