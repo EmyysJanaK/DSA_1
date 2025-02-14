@@ -179,3 +179,5 @@ void max_flow(FlowGraph &graph, int s, int t)
       }
       flow += min_flow;
     }
+     } while (pred[t] != -1);
+}
