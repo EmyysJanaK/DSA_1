@@ -181,3 +181,8 @@ void max_flow(FlowGraph &graph, int s, int t)
     }
      } while (pred[t] != -1);
 }
+
+int min_overlaid_charts(const FlowGraph &graph, int num_stocks)
+{
+
+  int min_path_cover{0};
