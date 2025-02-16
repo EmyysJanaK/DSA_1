@@ -186,3 +186,15 @@ int min_overlaid_charts(const FlowGraph &graph, int num_stocks)
 {
 
   int min_path_cover{0};
+  for (int i = 1; i <= num_stocks; ++i)
+  {
+    for (auto id : graph.get_ids(i))
+    {
+      const FlowGraph::Edge &e = graph.get_edge(id);
+      if (e.flow > 0)
+      {
+        ++min_path_cover;
+        break;
+      }
+    }
+  }
