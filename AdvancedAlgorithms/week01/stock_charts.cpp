@@ -200,3 +200,4 @@ int min_overlaid_charts(const FlowGraph &graph, int num_stocks)
   }
   return (num_stocks - min_path_cover);
 }
+
