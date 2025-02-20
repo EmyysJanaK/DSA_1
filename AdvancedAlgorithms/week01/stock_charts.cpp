@@ -200,17 +200,4 @@ int min_overlaid_charts(const FlowGraph &graph, int num_stocks)
   }
   return (num_stocks - min_path_cover);
 }
-int main() {
-    size_t num_stocks, num_points;
-    std::cin >> num_stocks >> num_points;
 
-    FlowGraph graph = construct_graph(num_stocks, num_points);
-    
-    max_flow(graph, 0, num_stocks + num_points + 1);
-    
-    int result = min_overlaid_charts(graph, num_stocks);
-    
-    std::cout << result << std::endl;
-
-    return 0;
-}
