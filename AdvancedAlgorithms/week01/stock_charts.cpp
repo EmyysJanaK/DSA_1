@@ -206,6 +206,10 @@ int main()
 
   size_t num_stocks, num_points;
   std::cin >> num_stocks >> num_points;
+    if (num_stocks == 0 || num_points == 0) {
+        std::cout << 0 << std::endl;
+        return 0;
+    }
 
   FlowGraph graph = construct_graph(num_stocks, num_points);
 
