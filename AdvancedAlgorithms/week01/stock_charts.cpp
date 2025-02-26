@@ -210,6 +210,9 @@ int main()
         std::cout << 0 << std::endl;
         return 0;
     }
+    if (num_stocks > 1000 || num_points > 1000) {
+        std::cerr << "Error: Number of stocks or points exceeds limit." << std::endl;
+        return 1;
 
   FlowGraph graph = construct_graph(num_stocks, num_points);
 
